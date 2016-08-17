@@ -56,7 +56,7 @@ public extension Mappable {
             x = try self.init(map: Mapper(JSON: JSON))
         } catch let error {
             print(error)
-            MapperErrorReporter.report?(error, ["Object", String(self.dynamicType)])
+            MapperErrorReporter.report?(error, ["Object": String(self.dynamicType)])
         }
         return x
     }
