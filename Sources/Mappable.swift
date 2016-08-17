@@ -51,7 +51,14 @@ public protocol Mappable {
 public extension Mappable {
     @warn_unused_result
     public static func from(JSON: NSDictionary) -> Self? {
-        return try? self.init(map: Mapper(JSON: JSON))
+        var x: Self? = nil
+        do {
+            x = try self.init(map: Mapper(JSON: JSON))
+        } catch let error {
+            print(error)
+            MapperErrorReporter.report?(error, ["Object", String(self.dynamicType)])
+        }
+        return x
     }
 
     @warn_unused_result
