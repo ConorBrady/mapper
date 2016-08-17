@@ -10,5 +10,5 @@ import Foundation
 
 public struct MapperErrorReporter {
 
-    static var report: ((ErrorType, [String: AnyObject]?) -> ())? = nil
+    public static var report: ((ErrorType, [String: AnyObject]?) -> ())? = nil
 }
